@@ -1,7 +1,7 @@
 module Utils (
   Classification (..),
   Classifier,
-  toClassification
+  anomalyIf
 ) where
 
 data Classification = Normal
@@ -10,5 +10,5 @@ data Classification = Normal
 
 type Classifier p = p -> [p] -> Classification
 
-toClassification :: Bool -> Classification
-toClassification isNormal = if isNormal then Normal else Anomaly
+anomalyIf :: Bool -> Classification
+anomalyIf isNormal = if isNormal then Normal else Anomaly
