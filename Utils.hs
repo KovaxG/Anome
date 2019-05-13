@@ -1,23 +1,15 @@
 module Utils where
 
-import Data.List
-import Data.Either.Extra
-import Text.Parsec
+type Index = Int
 
-readCSV :: String -> [[String]]
-readCSV =
-    transpose
-    . filter (/= [""])
-    . fromRight []
-    . parse rule "idk"
-    where
-        rule = sepBy line (char '\n')
-        line = sepBy cols (char ',')
-        cols = many alphaNum
+zipWithIndex :: [a] -> [(Int, a)]
+zipWithIndex = zip [1 ..]
 
-slidingWindow :: [a] -> Int -> ([a] -> b) -> [b]
-slidingWindow as len f = go as
-  where
-    go as
-      | length as >= len = f (take len as) : go (tail as)
-      | otherwise =  []
+normals :: Int -> [Int]
+normals n = replicate n 0
+
+anomaly :: [Int]
+anomaly = [1]
+
+get :: [a] -> Index -> a
+get as i = as !! (i-1)
