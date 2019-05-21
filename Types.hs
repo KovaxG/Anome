@@ -6,8 +6,7 @@ type Metric a = Classification -> Classification -> a
 data Example = Example {
   name :: String,
   c0 :: Classification,
-  c1 :: Classification,
-  c2 :: Classification
+  cs :: [Classification]
 } deriving (Show)
 
 myShow :: Classification -> String
