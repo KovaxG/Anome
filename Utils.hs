@@ -1,5 +1,7 @@
 module Utils where
 
+import Data.Maybe
+
 type Index = Int
 
 zipWithIndex :: [a] -> [(Int, a)]
@@ -21,3 +23,9 @@ a != b = a /= b
 
 orElse :: Maybe a -> Maybe a -> Maybe a
 orElse ma mb = maybe mb Just ma
+
+safeRead :: (Read a) => String -> Maybe a
+safeRead = fmap fst . listToMaybe . reads
+
+errorRead :: (Read a) => String -> Either String a
+errorRead a = maybe (Left $ "Could not parse (" ++ a ++ ")") Right $ safeRead a
