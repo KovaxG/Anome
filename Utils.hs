@@ -13,3 +13,11 @@ anomaly = [1]
 
 get :: [a] -> Index -> a
 get as i = as !! (i-1)
+
+(|>) :: a -> (a -> b) -> b
+a |> f = f a
+
+a != b = a /= b
+
+orElse :: Maybe a -> Maybe a -> Maybe a
+orElse ma mb = maybe mb Just ma

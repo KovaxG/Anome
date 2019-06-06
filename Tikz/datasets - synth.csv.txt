@@ -1,0 +1,15 @@
+\draw[thick] (0,0.0) node[anchor=east] {$C_0$: } -- (6.0,0.0);
+\draw[thick] (1.62,0.2) -- (1.62,-0.2);
+\draw[thick] (4.56,0.2) -- (4.56,-0.2);
+\draw[thick] (0,-1.0) node[anchor=east] {$C_1$: } -- (6.0,-1.0);
+\draw[thick] (0,-2.0) node[anchor=east] {$C_2$: } -- (6.0,-2.0);
+\draw[thick] (1.68,-1.8) -- (1.68,-2.2);
+\draw[thick] (4.56,-1.8) -- (4.56,-2.2);
+\draw[thick] (0,-3.0) node[anchor=east] {$C_3$: } -- (6.0,-3.0);
+\draw[thick] (1.56,-2.8) -- (1.56,-3.2);
+\draw[thick] (4.5,-2.8) -- (4.5,-3.2);
+\draw[thick] (0,-4.0) node[anchor=east] {$C_4$: } -- (6.0,-4.0);
+\draw[thick] (4.62,-3.8) -- (4.62,-4.2);
+\draw[thick] (0,-5.0) node[anchor=east] {$C_5$: } -- (6.0,-5.0);
+\draw[thick] (1.26,-4.8) -- (1.26,-5.2);
+\draw[thick] (4.86,-4.8) -- (4.86,-5.2);
