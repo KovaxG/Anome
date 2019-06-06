@@ -2,14 +2,17 @@ module CSV (
   CSV (..),
   readCSVsFromDir,
   getCol,
-  nameOf
+  nameOf,
+  csvToExample
 ) where
 
 import Data.Either
 import Data.List
+import Data.Maybe
 import System.Directory
 import Text.Parsec
 
+import Types
 import Utils
 
 data CSV = CSV String [(String, [Int])] deriving (Show)
@@ -19,6 +22,18 @@ getCol (CSV _ cs) name = fmap snd $ find ((==name) . fst) cs
 
 nameOf :: CSV -> String
 nameOf (CSV name _) = name
+
+csvToExample :: CSV -> Example
+csvToExample csv =
+  Example {
+    name = nameOf csv,
+    c0 = fromJust groundTruth,
+    cs = map fromJust methodResults
+  }
+  where
+    groundTruth = orElse (getCol csv "orig") (getCol csv "label")
+    methodNames = ["bdm0", "bdm1", "median", "linapprox", "FAR"]
+    methodResults = map (getCol csv) methodNames
 
 readCSVsFromDir :: String -> IO [CSV]
 readCSVsFromDir dir = do
