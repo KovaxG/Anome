@@ -2,6 +2,7 @@ import CSV
 import Proposed_Distance
 import Proposed_Counting
 import Proposed_Weighted
+import Gensler
 import Tikz
 import Traditional
 import Types
@@ -20,16 +21,19 @@ runExample (Example name c0 cs) = do
   putStrLn $ "Name: " ++ name
   putStrLn $ "C0: " ++ show (length c0)
   mapM_ putStrLn $ map (\(i, ci) -> "C" ++ show i ++ ": " ++ show (length ci)) csi
-  showMetric "confMatrix"         confMatrix
-  showMetric "acc"                m_acc
-  showMetric "precision"          m_precision
-  showMetric "recall"             m_recall
-  showMetric "distance"           distance_m
-  showMetric "countingWindow"     (countingWindow 10)
-  showMetric "total detected"     (m_total_detected 10)
-  showMetric "detection accuracy" (m_detection_accuracy 10)
-  --showMetric "linear weighted"    (weightedWindow (linear 10.0))
-  --showMetric "plinear weighted"   (weightedWindow (plinear 10.0))
+  showMetric "confMatrix"     confMatrix
+  showMetric "acc"            m_acc
+  showMetric "precision"      m_precision
+  showMetric "recall"         m_recall
+  showMetric "TD"             (distance_m (scale 1))
+  showMetric "STD"            (distance_m square)
+  showMetric "countingWindow" (countingWindow 10)
+  showMetric "TDIR"           (m_total_detected 10)
+  showMetric "DAIR"           (m_detection_accuracy 10)
+  showMetric "weightedwindow" (weightedWindow (linear 10.0))
+  showMetric "WDD"            (wdd (linear 10.0) 0.6)
+  showMetric "ADC"            (adc 10)
+  showMetric "ADD"            (add 10)
   where
     csi :: [(Int, Classification)]
     csi = zipWithIndex cs
