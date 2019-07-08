@@ -13,7 +13,7 @@ writeTikz dir ex = do
         |> (=<<) (\(i, ci) -> tikz ci (- fromIntegral i) i)
   writeFile (dir ++  "/"  ++ name ex ++ ".txt") $ unlines (gt ++ methods)
   where
-    lineLength = if length (c0 ex) > 500 then 10 else 6
+    lineLength = if length (c0 ex) == 101 then 6 else 10
     tikz = toTikz lineLength
 
 toTikz :: Double -> Classification -> Double -> Int -> [String]
